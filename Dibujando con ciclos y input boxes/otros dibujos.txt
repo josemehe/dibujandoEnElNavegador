@@ -1,0 +1,7 @@
+<p>Dibujo con ciclo while</p>
+  <canvas width="300" height="300" id="dibujito_1"></canvas>
+  <script src="dibujo1.js" type="text/javascript"></script>
+<p>Dibujo con ciclo for</p>
+  <canvas width="300" height="300" id="dibujito_2"></canvas>
+  <script src="dibujo2.js" type="text/javascript"></script>
+<p>Dibujo invertido</p>
