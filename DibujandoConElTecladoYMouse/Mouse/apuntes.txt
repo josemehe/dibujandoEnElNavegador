@@ -1,0 +1,7 @@
+'punto en el que se empieza a dibujar'
+dibujarLinea("red", x - 1, y - 1, x + 1, y + 1, papel);
+'Encuadre de mi dibujo'
+dibujarLinea("black", 1, 1, 299, 1, papel);        'le puse 1 en lugar de 0, y 299 en lugar de 300 para evitar el'
+dibujarLinea("black", 1, 1, 1, 300, papel);        'efecto de "dientes de sierra" o aliasing'
+dibujarLinea("black", 299, 1, 299, 299, papel);
+dibujarLinea("black", 1, 299, 299, 299, papel);
