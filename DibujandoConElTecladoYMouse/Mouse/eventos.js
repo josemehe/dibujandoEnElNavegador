@@ -10,7 +10,8 @@ dibujarLinea("black", 1, 299, 299, 299, papel);
 
 function dibujarMouse(evento)
 {
-console.log("funciona")
+console.log(evento.offsetX);
+console.log(evento.offsetY);
 }
 
 function dibujarLinea(color, x_inicial, y_inicial, x_final, y_final, lienzo)
