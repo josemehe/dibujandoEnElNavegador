@@ -1,3 +1,10 @@
+console.log(evento)
+
+cuadrito.addEventListener("mouseup", dibujarMouse);
+
+
+
+
 'punto en el que se empieza a dibujar'
 dibujarLinea("red", x - 1, y - 1, x + 1, y + 1, papel);
 'Encuadre de mi dibujo'
