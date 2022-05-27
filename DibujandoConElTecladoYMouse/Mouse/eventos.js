@@ -1,34 +1,24 @@
-var cuadrito = document.getElementById("canvas");
-var papel = cuadrito.getContext("2d");
-cuadrito.addEventListener("mousedown", pulsarMouse);
-cuadrito.addEventListener("mousemove", moverMouse);
-cuadrito.addEventListener("mouseup", levantarMouse);
+var square = document.getElementById("canvas");
+var paper = square.getContext("2d");
+var status
 
-'Encuadre de mi dibujo'
-dibujarLinea("black", 1, 1, 299, 1, papel);
-dibujarLinea("black", 1, 1, 1, 300, papel);
-dibujarLinea("black", 299, 1, 299, 299, papel);
-dibujarLinea("black", 1, 299, 299, 299, papel);
+square.addEventListener("mousemove", mouseDraw);
 
-function pulsarMouse(evento)
+'framing of my drawing'
+dibujarLinea("black", 1, 1, 299, 1, paper);
+dibujarLinea("black", 1, 1, 1, 300, paper);
+dibujarLinea("black", 299, 1, 299, 299, paper);
+dibujarLinea("black", 1, 299, 299, 299, paper);
+
+function mouseDraw(evento)
 {
-  estado = 1
-  var x = evento.offsetX;
-  var y = evento.offsetY;
-}
-
-function levantarMouse(evento)
-{
-estado = 0
-}
-
-function moverMouse(evento)
-{
+  var estado = evento.buttons
   if (estado == 1)
   {
-    var x = evento.offsetX;
-    var y = evento.offsetY;
-    dibujarLinea("red", x-1, y-1, x, y, papel)
+    x = evento.offsetX;
+    y = evento.offsetY;
+    dibujarLinea("red", x-1, y-1, x, y, paper)
+    console.log(evento)
   }
   else
   {
@@ -39,11 +29,11 @@ function moverMouse(evento)
 
 function dibujarLinea(color, x_i, y_i, x_f, y_f, lienzo)
 {
-  lienzo.beginPath();                           'arranca el dibujo'
-  lienzo.lineWidth = 2;                         'grosor de la linea'
-  lienzo.strokeStyle = color;                   'color de la linea'
-  lienzo.moveTo(x_i,y_i);                       'punto inicial'
-  lienzo.lineTo(x_f,y_f);                       'punto final'
-  lienzo.stroke();                              'accion de dibujar'
-  lienzo.closePath();                           'termina el dibujo'
+  lienzo.beginPath();                           'star drawing'
+  lienzo.lineWidth = 2;                         'line thickness'
+  lienzo.strokeStyle = color;                   'line color'
+  lienzo.moveTo(x_i,y_i);                       'starting point'
+  lienzo.lineTo(x_f,y_f);                       'final point'
+  lienzo.stroke();                              'action of draw'
+  lienzo.closePath();                           'finish the drawing'
 }
