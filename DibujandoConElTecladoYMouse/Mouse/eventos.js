@@ -2,7 +2,9 @@ var square = document.getElementById("canvas");
 var paper = square.getContext("2d");
 var status
 
+'Events'
 square.addEventListener("mousemove", mouseDraw);
+square.addEventListener("mousedown", mouseDrawPoint);
 
 'framing of my drawing'
 dibujarLinea("black", 1, 1, 299, 1, paper);
@@ -10,6 +12,15 @@ dibujarLinea("black", 1, 1, 1, 300, paper);
 dibujarLinea("black", 299, 1, 299, 299, paper);
 dibujarLinea("black", 1, 299, 299, 299, paper);
 
+'Draw a single point'
+function mouseDrawPoint(evento)
+{
+  x = evento.offsetX;
+  y = evento.offsetY;
+  dibujarLinea("red", x-0.5, y-0.5, x+0.5, y+0.5, paper)
+}
+
+'Draw lines'
 function mouseDraw(evento)
 {
   var estado = evento.buttons
@@ -17,8 +28,7 @@ function mouseDraw(evento)
   {
     x = evento.offsetX;
     y = evento.offsetY;
-    dibujarLinea("red", x-1, y-1, x, y, paper)
-    console.log(evento)
+    dibujarLinea("red", x-0.5, y-0.5, x+0.5, y+0.5, paper)
   }
   else
   {
@@ -27,6 +37,7 @@ function mouseDraw(evento)
   }
 }
 
+'Draw action'
 function dibujarLinea(color, x_i, y_i, x_f, y_f, lienzo)
 {
   lienzo.beginPath();                           'star drawing'
