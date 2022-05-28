@@ -1,7 +1,10 @@
+'Canvas'
 var square = document.getElementById("canvas");
 var paper = square.getContext("2d");
 var status
 
+'Color'
+var getColor = document.getElementById("idColor");
 'Events'
 square.addEventListener("mousemove", mouseDraw);
 square.addEventListener("mousedown", mouseDrawPoint);
@@ -17,7 +20,8 @@ function mouseDrawPoint(evento)
 {
   x = evento.offsetX;
   y = evento.offsetY;
-  dibujarLinea("red", x-0.5, y-0.5, x+0.5, y+0.5, paper)
+  drawingColor = getColor.value
+  dibujarLinea(drawingColor, x-0.5, y-0.5, x+0.5, y+0.5, paper)
 }
 
 'Draw lines'
@@ -28,7 +32,8 @@ function mouseDraw(evento)
   {
     x = evento.offsetX;
     y = evento.offsetY;
-    dibujarLinea("red", x-0.5, y-0.5, x+0.5, y+0.5, paper)
+    drawingColor = getColor.value
+    dibujarLinea(drawingColor, x-0.5, y-0.5, x+0.5, y+0.5, paper)
   }
   else
   {
@@ -38,13 +43,13 @@ function mouseDraw(evento)
 }
 
 'Draw action'
-function dibujarLinea(color, x_i, y_i, x_f, y_f, lienzo)
+function dibujarLinea(color, x_i, y_i, x_f, y_f, canvas)
 {
-  lienzo.beginPath();                           'star drawing'
-  lienzo.lineWidth = 2;                         'line thickness'
-  lienzo.strokeStyle = color;                   'line color'
-  lienzo.moveTo(x_i,y_i);                       'starting point'
-  lienzo.lineTo(x_f,y_f);                       'final point'
-  lienzo.stroke();                              'action of draw'
-  lienzo.closePath();                           'finish the drawing'
+  canvas.beginPath();                           'star drawing'
+  canvas.lineWidth = 2;                         'line thickness'
+  canvas.strokeStyle = color;                   'line color'
+  canvas.moveTo(x_i,y_i);                       'starting point'
+  canvas.lineTo(x_f,y_f);                       'final point'
+  canvas.stroke();                              'action of draw'
+  canvas.closePath();                           'finish the drawing'
 }
