@@ -30,6 +30,11 @@ dibujarLinea("black", 1, 299, 299, 299, paper, 3);
 'Draw a single point'
 function mouseDrawPoint(evento)
 {
+  'framing of my drawing'
+  dibujarLinea("black", 1, 1, 299, 1, paper, 3);
+  dibujarLinea("black", 1, 1, 1, 300, paper, 3);
+  dibujarLinea("black", 299, 1, 299, 299, paper, 3);
+  dibujarLinea("black", 1, 299, 299, 299, paper, 3);
   x = evento.offsetX;
   y = evento.offsetY;
   thickness = lThickness.value
@@ -88,6 +93,11 @@ function mouseDrawPoint(evento)
 'Draw lines'
 function mouseDraw(evento)
 {
+  'framing of my drawing'
+  dibujarLinea("black", 1, 1, 299, 1, paper, 3);
+  dibujarLinea("black", 1, 1, 1, 300, paper, 3);
+  dibujarLinea("black", 299, 1, 299, 299, paper, 3);
+  dibujarLinea("black", 1, 299, 299, 299, paper, 3);
   var estado = evento.buttons
   if (estado == 1)
   {
