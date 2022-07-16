@@ -1,17 +1,22 @@
 'Canvas'
 var square = document.getElementById("idCanvas");
 var paper = square.getContext("2d");
-var status
 'Color'
 var getColor = document.getElementById("idColor");
 'Eraser'
+var eraserStatus = 0
 var getEraser = document.getElementById("idEraser");
-'getEraser.addEventListener("click", eraser);'
-function eraser(evento)
+'Eraser ON and OFF'
+getEraser.addEventListener("click", eraserON);
+function eraserON(evento)
 {
-eraser = 1
+  eraserStatus = 1
 }
-
+getColor.addEventListener("click", eraserOFF);
+function eraserOFF(evento)
+{
+  eraserStatus = 0
+}
 'Events'
 square.addEventListener("mousemove", mouseDraw);
 square.addEventListener("mousedown", mouseDrawPoint);
@@ -28,28 +33,56 @@ function mouseDrawPoint(evento)
   x = evento.offsetX;
   y = evento.offsetY;
   thickness = lThickness.value
-  drawingColor = getColor.value
-  'circle point approximation'
-    'vertical and horizontal lines'
-        dibujarLinea(drawingColor, x, y-0.5, x, y+0.5, paper, thickness)
-        dibujarLinea(drawingColor, x-0.5, y, x+0.5, y, paper, thickness)
-    'diagonal lines'
-      for (var i = 1; i < 5; i++)
-      {
-        dibujarLinea(drawingColor, x-0.5, y+0.1*i, x+0.5, y-0.1*i, paper, thickness)
-      }
-      for (var i = 1; i < 5; i++)
-      {
-        dibujarLinea(drawingColor, x-0.1*i, y+0.5, x+0.1*i, y-0.5, paper, thickness)
-      }
-      for (var i = 1; i < 5; i++)
-      {
-        dibujarLinea(drawingColor, x-0.5, y-0.1*i, x+0.5, y+0.1*i, paper, thickness)
-      }
-      for (var i = 1; i < 5; i++)
-      {
-        dibujarLinea(drawingColor, x-0.1*i, y-0.5, x+0.1*i, y+0.5, paper, thickness)
-      }
+  if (eraserStatus == 1)
+    {
+      drawingColor = "#FFFFFF"
+      'circle point approximation'
+        'vertical and horizontal lines'
+            dibujarLinea(drawingColor, x, y-0.5, x, y+0.5, paper, thickness)
+            dibujarLinea(drawingColor, x-0.5, y, x+0.5, y, paper, thickness)
+        'diagonal lines'
+          for (var i = 1; i < 5; i++)
+          {
+            dibujarLinea(drawingColor, x-0.5, y+0.1*i, x+0.5, y-0.1*i, paper, thickness)
+          }
+          for (var i = 1; i < 5; i++)
+          {
+            dibujarLinea(drawingColor, x-0.1*i, y+0.5, x+0.1*i, y-0.5, paper, thickness)
+          }
+          for (var i = 1; i < 5; i++)
+          {
+            dibujarLinea(drawingColor, x-0.5, y-0.1*i, x+0.5, y+0.1*i, paper, thickness)
+          }
+          for (var i = 1; i < 5; i++)
+          {
+            dibujarLinea(drawingColor, x-0.1*i, y-0.5, x+0.1*i, y+0.5, paper, thickness)
+          }
+    }
+  else
+    {
+      drawingColor = getColor.value
+      'circle point approximation'
+        'vertical and horizontal lines'
+            dibujarLinea(drawingColor, x, y-0.5, x, y+0.5, paper, thickness)
+            dibujarLinea(drawingColor, x-0.5, y, x+0.5, y, paper, thickness)
+        'diagonal lines'
+          for (var i = 1; i < 5; i++)
+          {
+            dibujarLinea(drawingColor, x-0.5, y+0.1*i, x+0.5, y-0.1*i, paper, thickness)
+          }
+          for (var i = 1; i < 5; i++)
+          {
+            dibujarLinea(drawingColor, x-0.1*i, y+0.5, x+0.1*i, y-0.5, paper, thickness)
+          }
+          for (var i = 1; i < 5; i++)
+          {
+            dibujarLinea(drawingColor, x-0.5, y-0.1*i, x+0.5, y+0.1*i, paper, thickness)
+          }
+          for (var i = 1; i < 5; i++)
+          {
+            dibujarLinea(drawingColor, x-0.1*i, y-0.5, x+0.1*i, y+0.5, paper, thickness)
+          }
+    }
 }
 
 'Draw lines'
@@ -61,58 +94,57 @@ function mouseDraw(evento)
     x = evento.offsetX;
     y = evento.offsetY;
     thickness = lThickness.value
-    if (eraser == 1)
-    {
-      drawingColor = "#FFFFFF"
-      'circle point approximation'
-      'vertical and horizontal lines'
-      dibujarLinea(drawingColor, x, y-0.5, x, y+0.5, paper, thickness)
-      dibujarLinea(drawingColor, x-0.5, y, x+0.5, y, paper, thickness)
-      'diagonal lines'
-      for (var i = 1; i < 5; i++)
+      if (eraserStatus == 1)
       {
-        dibujarLinea(drawingColor, x-0.5, y+0.1*i, x+0.5, y-0.1*i, paper, thickness)
+        drawingColor = "#FFFFFF"
+        'circle point approximation'
+        'vertical and horizontal lines'
+        dibujarLinea(drawingColor, x, y-0.5, x, y+0.5, paper, thickness)
+        dibujarLinea(drawingColor, x-0.5, y, x+0.5, y, paper, thickness)
+        'diagonal lines'
+        for (var i = 1; i < 5; i++)
+        {
+          dibujarLinea(drawingColor, x-0.5, y+0.1*i, x+0.5, y-0.1*i, paper, thickness)
+        }
+        for (var i = 1; i < 5; i++)
+        {
+          dibujarLinea(drawingColor, x-0.1*i, y+0.5, x+0.1*i, y-0.5, paper, thickness)
+        }
+        for (var i = 1; i < 5; i++)
+        {
+          dibujarLinea(drawingColor, x-0.5, y-0.1*i, x+0.5, y+0.1*i, paper, thickness)
+        }
+        for (var i = 1; i < 5; i++)
+        {
+          dibujarLinea(drawingColor, x-0.1*i, y-0.5, x+0.1*i, y+0.5, paper, thickness)
+        }
       }
-      for (var i = 1; i < 5; i++)
+      else
       {
-        dibujarLinea(drawingColor, x-0.1*i, y+0.5, x+0.1*i, y-0.5, paper, thickness)
-      }
-      for (var i = 1; i < 5; i++)
-      {
-        dibujarLinea(drawingColor, x-0.5, y-0.1*i, x+0.5, y+0.1*i, paper, thickness)
-      }
-      for (var i = 1; i < 5; i++)
-      {
-        dibujarLinea(drawingColor, x-0.1*i, y-0.5, x+0.1*i, y+0.5, paper, thickness)
+        drawingColor = getColor.value
+        'circle point approximation'
+        'vertical and horizontal lines'
+        dibujarLinea(drawingColor, x, y-0.5, x, y+0.5, paper, thickness)
+        dibujarLinea(drawingColor, x-0.5, y, x+0.5, y, paper, thickness)
+        'diagonal lines'
+        for (var i = 1; i < 5; i++)
+        {
+          dibujarLinea(drawingColor, x-0.5, y+0.1*i, x+0.5, y-0.1*i, paper, thickness)
+        }
+        for (var i = 1; i < 5; i++)
+        {
+          dibujarLinea(drawingColor, x-0.1*i, y+0.5, x+0.1*i, y-0.5, paper, thickness)
+        }
+        for (var i = 1; i < 5; i++)
+        {
+          dibujarLinea(drawingColor, x-0.5, y-0.1*i, x+0.5, y+0.1*i, paper, thickness)
+        }
+        for (var i = 1; i < 5; i++)
+        {
+          dibujarLinea(drawingColor, x-0.1*i, y-0.5, x+0.1*i, y+0.5, paper, thickness)
+        }
       }
     }
-    else
-    {
-      drawingColor = getColor.value
-      eraser = 0
-      'circle point approximation'
-      'vertical and horizontal lines'
-      dibujarLinea(drawingColor, x, y-0.5, x, y+0.5, paper, thickness)
-      dibujarLinea(drawingColor, x-0.5, y, x+0.5, y, paper, thickness)
-      'diagonal lines'
-      for (var i = 1; i < 5; i++)
-      {
-        dibujarLinea(drawingColor, x-0.5, y+0.1*i, x+0.5, y-0.1*i, paper, thickness)
-      }
-      for (var i = 1; i < 5; i++)
-      {
-        dibujarLinea(drawingColor, x-0.1*i, y+0.5, x+0.1*i, y-0.5, paper, thickness)
-      }
-      for (var i = 1; i < 5; i++)
-      {
-        dibujarLinea(drawingColor, x-0.5, y-0.1*i, x+0.5, y+0.1*i, paper, thickness)
-      }
-      for (var i = 1; i < 5; i++)
-      {
-        dibujarLinea(drawingColor, x-0.1*i, y-0.5, x+0.1*i, y+0.5, paper, thickness)
-      }
-    }
-  }
   else
   {
     var x = evento.offsetX;
